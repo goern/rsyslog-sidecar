@@ -1,0 +1,47 @@
+---
+kind: ImageStreamList
+apiVersion: v1
+metadata: {}
+items:
+- kind: ImageStream
+  apiVersion: v1
+  metadata:
+    name: postfix
+  spec:
+    tags:
+    - name: latest
+      annotations:
+        description: This is a Postfix mail relay
+        tags: postfix
+      from:
+        kind: ImageStreamTag
+        name: '1.0.0'
+    - name: '1.0.0'
+      annotations:
+        description: This is a Postfix mail relay
+        tags: postfix
+        version: '1.0.0'
+      from:
+        kind: DockerImage
+        name: goern/postfix-centos7:latest
+- kind: ImageStream
+  apiVersion: v1
+  metadata:
+    name: rsyslog
+  spec:
+    tags:
+    - name: latest
+      annotations:
+        description: This is a rsyslog bridge
+        tags: rsyslog
+      from:
+        kind: ImageStreamTag
+        name: '1.0.0'
+    - name: '1.0.0'
+      annotations:
+        description: This is a rsyslog bridge
+        tags: rsyslog
+        version: '1.0.0'
+      from:
+        kind: DockerImage
+        name: goern/rsyslog-centos7:latest
